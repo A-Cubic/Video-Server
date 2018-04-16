@@ -10,6 +10,7 @@ namespace VideoServer.Dao
 
         public DBManager()
         {
+            var ss = System.Environment.GetEnvironmentVariable("User", EnvironmentVariableTarget.Process);
             this.dbt = DBType.Mysql;
             //this.str = "";
         }
