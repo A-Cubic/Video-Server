@@ -10,31 +10,28 @@ using VideoServer.Buss;
 namespace VideoServer.Controllers
 {
     [Route("api/[controller]")]
-    public class VListController : Controller
+    public class vlistController : Controller
     {
         private VideoBuss buss = new VideoBuss();
 
-        // GET: api/values
-        [HttpGet]
-        public string Get()
+        [HttpGet("{func}/{id}/{inner}")]
+        public string Get(string func, string id, bool inner)
         {
-            return buss.getTestString();
-            //return new string[] { "value1", "value2" };
+            switch(func)
+            {
+                case "homepage":
+                    return buss.GetHomePageByCompanyId(id, inner);
+                case "entry":
+                    return buss.GetEntryByHomePageId(id, inner);
+                case "item":
+                    return buss.GetItemsByEntryId(id, inner);
+                case "video":
+                    return buss.GetVideoByItemId(id, inner);
+                case "goods":
+                    return buss.GetGoodsByVideoId(id);
+                default:
+                    return buss.GetHomePageByCompanyId(id, inner);
+            }
         }
-
-        // GET api/values/5
-        [HttpGet("{id}")]
-        public string Get(int id)
-        {
-            return buss.getVList();
-            //return "value";
-        }
-
-        // POST api/values
-        [HttpPost]
-        public void Post([FromBody]string value)
-        {
-        }
-
     }
 }

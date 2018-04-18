@@ -6,13 +6,20 @@ namespace VideoServer.Dao
     public class DBManager : IType
     {
         private DBType dbt;
-        private string str = "Server=localhost;Port=3306;Database=mysql;Uid=root;Pwd=13161111;CharSet=utf8;";
+        private string str = "";
 
         public DBManager()
         {
-            var ss = System.Environment.GetEnvironmentVariable("User", EnvironmentVariableTarget.Process);
+            var url = System.Environment.GetEnvironmentVariable("VideoDBUrl", EnvironmentVariableTarget.User);
+            var uid = System.Environment.GetEnvironmentVariable("VideoDBUser", EnvironmentVariableTarget.User);
+            var passd = System.Environment.GetEnvironmentVariable("VideoDBPassword", EnvironmentVariableTarget.User);
+
+            this.str = "Server="+ url 
+                     + ";Port=13306;Database=video;Uid="+ uid 
+                     + ";Pwd="+ passd 
+                     + ";CharSet=utf8;";
+
             this.dbt = DBType.Mysql;
-            //this.str = "";
         }
 
         public DBManager(DBType d, string s)
