@@ -12,10 +12,12 @@ namespace VideoServer.Dao
         {
             var url = System.Environment.GetEnvironmentVariable("VideoDBUrl", EnvironmentVariableTarget.User);
             var uid = System.Environment.GetEnvironmentVariable("VideoDBUser", EnvironmentVariableTarget.User);
+            var port = System.Environment.GetEnvironmentVariable("VideoDBPort", EnvironmentVariableTarget.User);
             var passd = System.Environment.GetEnvironmentVariable("VideoDBPassword", EnvironmentVariableTarget.User);
 
             this.str = "Server="+ url 
-                     + ";Port=13306;Database=video;Uid="+ uid 
+                     + ";Port="+ port 
+                     + ";Database=video;Uid="+ uid 
                      + ";Pwd="+ passd 
                      + ";CharSet=utf8;";
 
