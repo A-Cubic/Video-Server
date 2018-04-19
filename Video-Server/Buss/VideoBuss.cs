@@ -204,7 +204,7 @@ namespace VideoServer.Buss
         {
             Video video = new Video();
             DataTable dtVideo = this.videoDao.getVideo(id);
-            if (dtVideo != null && dtVideo.Rows.Count == 1)
+            if (dtVideo == null)
                 return null;
             video.ids = dtVideo.Rows[0]["IDS"].ToString();
             video.video_text = dtVideo.Rows[0]["VIDEO_TEXT"].ToString();
