@@ -10,17 +10,17 @@ namespace VideoServer.Dao
 
         public DBManager()
         {
-            var url = System.Environment.GetEnvironmentVariable("VideoDBUrl", EnvironmentVariableTarget.User);
-            var uid = System.Environment.GetEnvironmentVariable("VideoDBUser", EnvironmentVariableTarget.User);
-            var port = System.Environment.GetEnvironmentVariable("VideoDBPort", EnvironmentVariableTarget.User);
-            var passd = System.Environment.GetEnvironmentVariable("VideoDBPassword", EnvironmentVariableTarget.User);
+            var url = System.Environment.GetEnvironmentVariable("VideoDBUrl", EnvironmentVariableTarget.Machine);
+            var uid = System.Environment.GetEnvironmentVariable("VideoDBUser", EnvironmentVariableTarget.Machine);
+            var port = System.Environment.GetEnvironmentVariable("VideoDBPort", EnvironmentVariableTarget.Machine);
+            var passd = System.Environment.GetEnvironmentVariable("VideoDBPassword", EnvironmentVariableTarget.Machine);
 
             this.str = "Server="+ url 
                      + ";Port="+ port 
                      + ";Database=video;Uid="+ uid 
                      + ";Pwd="+ passd 
                      + ";CharSet=utf8;";
-
+            Console.Write(this.str);
             this.dbt = DBType.Mysql;
         }
 

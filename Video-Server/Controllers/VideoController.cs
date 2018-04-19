@@ -30,7 +30,7 @@ namespace VideoServer.Controllers
                 case "goods":
                     return buss.GetGoodsByVideoId(id);
                 default:
-                    return buss.GetHomePageByCompanyId(id, inner);
+                    return "OK";
             }
         }
     }
